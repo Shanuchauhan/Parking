@@ -211,6 +211,8 @@ app.post("/security/in", async (req, res) => {
   const { vehicle } = req.body;
 
   const resident = await Resident.findOne({ vehicle });
+  //For reducing Available Space
+  io.emit("reduceSpace");
 
   //! Check if resident
   if (resident) {
